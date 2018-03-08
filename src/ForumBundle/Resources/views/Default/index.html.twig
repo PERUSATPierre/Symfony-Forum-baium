@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <div class="container body">
+        <div class="container">
+            <h1>Bienvenue sur le forum des BaiumsDisciples</h1>
+            <p>Liste des sujets :</p>
+            <ul>
+                {% for subject in subjects %}
+                    <li><a href="{{path ('subject', {'id':subject.id})}}" >{{ subject.title }}</a></li>
+                {% endfor %}
+            </ul>
+            <h4>Ajouter un sujets</h4>
+            {{ form_start(form)}}
+            {{ form_end(form)}}
+        </div>
+    </div>
+{% endblock body %}

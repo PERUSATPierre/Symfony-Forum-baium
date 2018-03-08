@@ -1,0 +1,17 @@
+{% extends "@Admin/Default/index.html.twig" %}
+{% block content %}
+    <div class="container news">
+        <div class="row">
+        {% for news in listNews %}
+            <h4>{{news.title}}</h4>
+            <img src="{{ asset('uploads/imgNews/' ~ news.image) }}" width="500" height="300" alt=""></li>
+            <p>{{news.content}}</p>
+            <a href="{{path ('delete', {'id':news.id})}}" class="btn btn-danger">Supprimer la news</a>
+            <a href="{{path ('news-edit', {'id':news.id})}}" class="btn btn-info">Modifier la news</a>
+            <a href="{{path ('news-add')}}" class="btn btn-success">Ajouter une news</a>
+            
+            <div class="hr"></div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

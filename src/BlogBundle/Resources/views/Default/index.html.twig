@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+{% block body %}
+  <div class="container body">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6">
+                    <h2>Bienvenue dans l'antre des BaiumsDisciples !</h2>
+                    <p>
+                        Bonjour aventurier. Le Clan des BaiumsDisciples vous propose se Forum afin de partager nos expériences
+                        du jeu à travers des topics et des tutos, mais aussi de rester informer sur nos recrutements.
+                        Gloire à Baium!!!.
+                    </p>
+              </div>
+              <div class="col-md-6">
+                  <h2>Personne connectées sur Discord</h2>
+              </div>
+          </div>
+      </div>
+      <div class="container">
+          <h2>Nos Actualitées</h2>
+        {% for listnews in news %}
+        <div class="news">
+            <h2>{{listnews.title}}</h2>
+            <p>posté le : {{listnews.date|date('d-m-Y')}}</p>
+            {#<div style="background: url('{{ asset('uploads/imgNews/' ~ listnews.image) }}') no-repeat center;height: 300px; width: 100%; " ></div>#}
+            <img src="{{ asset('uploads/imgNews/' ~ listnews.image) }}" width="500" height="300" alt="">
+            <p class="content-news">{{listnews.content}}</p>
+        </div>
+        {% endfor %}
+      </div>
+  </div>
+{% endblock body %}

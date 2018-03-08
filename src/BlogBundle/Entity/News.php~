@@ -1,0 +1,62 @@
+<?php
+
+namespace BlogBundle\Entity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * News
+ *
+ * @ORM\Table(name="news")
+ * @ORM\Entity(repositoryClass="BlogBundle\Repository\NewsRepository")
+ */
+class News
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @Assert\NotBlank
+     * @ORM\Column(type="string", length=200)
+     */
+    private $title;
+
+    /**
+     * @Assert\NotBlank
+     * @ORM\Column(type="string")
+     */
+    private $content;
+    /**
+     * @Assert\File(
+     *     maxSize ="240k"
+     * )
+     * @ORM\Column(type="string")
+     */
+    private $image;
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="news")
+     */
+    private $author;
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date;
+}
+

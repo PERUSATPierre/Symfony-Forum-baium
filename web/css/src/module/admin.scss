@@ -1,0 +1,96 @@
+.body-admin{
+    background-image: none;
+}
+.list-option{
+    position: fixed !important;
+    height: 100%;
+    background-color: black;
+    ul{
+        list-style: none;
+        color: white;
+        width: 100%;
+        font-weight: bold;
+        li{
+            padding: 40px;
+            border-bottom: solid 1px white;
+            a{
+                color: white;
+            }
+            a:hover{
+                text-decoration: none;
+            }
+        }
+        li:hover{
+            background-color: #18ED83;
+            a{
+                color:black;
+            }
+        }
+    }
+}
+.hr{
+    height: 1px;
+    background-color: black;
+}
+.news{
+    h4{
+        padding:30px;
+    }
+    p{
+        padding: 30px;
+    }
+    a{
+        margin-bottom: 20px;
+        margin-right: 10px;
+    }
+}
+.content-option{
+    margin-left: 10%;
+}
+
+@media (max-width: 1700px){
+    .list-option{
+        position: static !important;
+        background-color: black;
+        display: inline-block;
+        min-width: 100%;
+        ul{
+            list-style: none;
+            color: white;
+            width: 100%;
+            font-weight: bold;
+            display: inline-block;
+            li{
+                padding: 40px;
+                border-bottom: solid 1px white;
+                display: inline-block !important;
+                margin: 10px;
+                a{
+                    color: white;
+                }
+                a:hover{
+                    text-decoration: none;
+                }
+            }
+            li:hover{
+                background-color: #18ED83;
+                a{
+                    color:black;
+                }
+            }
+        }
+    }
+    .content-option{
+        display: inline-block;
+        margin-left : 0 !important;
+    }
+}
+.form-admin{
+    padding: 20px;
+    input{
+        display: inline-block;
+    }
+    label{
+        display: block;
+    }
+}

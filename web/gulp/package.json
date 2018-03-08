@@ -1,0 +1,30 @@
+{
+  "name": "wehub-gulp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wehub",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.6",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "*",
+    "gulp-util": "^3.0.8",
+    "jshint": "^2.9.4"
+  },
+  "dependencies": {
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "jshint-stylish": "^2.2.1",
+    "plumber": "^0.4.8"
+  }
+}
