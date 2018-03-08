@@ -24,7 +24,7 @@ class NewsRepository extends \Doctrine\ORM\EntityRepository
         $query = $em->createQuery(
             ' SELECT u
               FROM BlogBundle:News u
-              ORDER BY u.date ASC
+              ORDER BY u.date DESC
             '
             //setParameter permet de declarer la variable passer en parametre de la fonction
         )->setMaxResults(3);

@@ -72,7 +72,8 @@ class DefaultController extends Controller
                 //insertion en base de donnée
                 $em->persist($news);
                 $em->flush();
-                //redirection vers la route qui porte le nom admin_office
+                $request->getSession()->getFlashBag()->add('add', 'message ajouté avec succés');
+                //redirection vers la route qui porte le nom news-add
                 return $this->redirectToRoute('news-add');
             }
         }

@@ -5,6 +5,11 @@
         <div class="col-md-offset-4">
             {{form_start(form)}}
             {{form_end(form)}}
+            {% if app.session.flashBag.has('add') %}
+                {% for msg in app.session.flashBag.get('add') %}
+                    {{msg}}
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 </div>
