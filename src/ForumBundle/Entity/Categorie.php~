@@ -12,18 +12,20 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Categorie
 {
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+        $this->type = new \Doctrine\Common\Collections\ArrayCollection();
+    }
     /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-    /**
      * @ORM\OneToMany(targetEntity="ForumBundle\Entity\Forum", mappedBy="categorie", cascade={"remove"})
      */
-    private $type;
+    private $id;
     /**
      * @ORM\Column(name="title", type="string")
      */
@@ -40,48 +42,6 @@ class Categorie
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->type = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add type
-     *
-     * @param \ForumBundle\Entity\Forum $type
-     *
-     * @return Categorie
-     */
-    public function addType(\ForumBundle\Entity\Forum $type)
-    {
-        $this->type[] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Remove type
-     *
-     * @param \ForumBundle\Entity\Forum $type
-     */
-    public function removeType(\ForumBundle\Entity\Forum $type)
-    {
-        $this->type->removeElement($type);
-    }
-
-    /**
-     * Get type
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 
     /**

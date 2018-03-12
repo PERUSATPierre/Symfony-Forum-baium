@@ -23,12 +23,10 @@ class Categorie
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\OneToMany(targetEntity="ForumBundle\Entity\Forum", mappedBy="categorie", cascade={"remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
     private $id;
-    /**
-     * @ORM\OneToMany(targetEntity="ForumBundle\Entity\Forum", mappedBy="categorie", cascade={"remove"})
-     */
-    private $type;
     /**
      * @ORM\Column(name="title", type="string")
      */
@@ -45,40 +43,6 @@ class Categorie
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Add type
-     *
-     * @param \ForumBundle\Entity\Forum $type
-     *
-     * @return Categorie
-     */
-    public function addType(\ForumBundle\Entity\Forum $type)
-    {
-        $this->type[] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Remove type
-     *
-     * @param \ForumBundle\Entity\Forum $type
-     */
-    public function removeType(\ForumBundle\Entity\Forum $type)
-    {
-        $this->type->removeElement($type);
-    }
-
-    /**
-     * Get type
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 
     /**

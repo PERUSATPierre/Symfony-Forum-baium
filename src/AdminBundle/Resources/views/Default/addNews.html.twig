@@ -5,8 +5,12 @@
         <div class="col-md-offset-4">
             {{form_start(form)}}
             {{form_end(form)}}
+            {# Ajout du message de confiramtion#}
+            {# recuperation du message de onfirmation du controller dont le nom est 'add' #}
             {% if app.session.flashBag.has('add') %}
+            {# On boucle sur le message 'add' #}
                 {% for msg in app.session.flashBag.get('add') %}
+                {# On affiche le msg 'add' #}
                     {{msg}}
                 {% endfor %}
             {% endif %}

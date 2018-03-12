@@ -10,4 +10,16 @@ namespace ForumBundle\Repository;
  */
 class ForumRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function showMessage($id)
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'SELECT m
+             FROM ForumBundle:Forum m
+             WHERE m.categorie = :id
+             ORDER BY m.date DESC'
+        )->setParameter('id', $id);
+
+        return $query->execute();
+    }
 }

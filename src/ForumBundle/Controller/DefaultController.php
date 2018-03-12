@@ -7,6 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use ForumBundle\Entity\Categorie;
+use ForumBundle\Entity\Forum;
+use ForumBundle\Form\MessageType;
 use ForumBundle\Form\AddSubjectType;
 
 class DefaultController extends Controller
@@ -45,6 +47,31 @@ class DefaultController extends Controller
         $em= $this->getDoctrine()->getManager();
         $subject = $em->getRepository("ForumBundle:Categorie")->find($id);
         $title = $subject->getTitle();
-        return $this->render('@Forum/Default/subject.html.twig', array('title'=>$title));
+
+        $message = new Forum();
+        $addForm = $this->createForm(MessageType::class, $message);
+
+        if($request->isMethod('POST'))
+        {
+            $addForm->handleRequest($request);
+            if($addForm->isValid())
+            {
+                $currentUser = $this->getUser();
+                $message->setAuthor($currentUser);
+                //find id de la categorie
+                $message->setCategorie($subject);
+                $em->persist($message);
+                $em->flush();
+
+                $request->getSession()->getFlashBag()->add('add_message', 'message posté avec succés');
+            }
+        }
+        //faire la requete concernant les messages
+        $messages = $em->getRepository('ForumBundle:Forum')->showMessage($id);
+
+        return $this->render('@Forum/Default/subject.html.twig', array(
+            'title'=>$title,
+            'form'=>$addForm->createView(),
+            'messages'=>$messages));
     }
 }
